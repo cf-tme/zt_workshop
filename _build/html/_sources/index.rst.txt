@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Cloudflare Connect 2022 - Hands On Labs!
-===================================================
+Welcome to the Cloudflare Zero Trust Hands-on Workshop!
+=======================================================
 
 
 .. toctree::
