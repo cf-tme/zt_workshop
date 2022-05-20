@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'cf-connect-2022'
+project = 'Cloudflare ZT Wrkshp - London'
 copyright = '2022, Cloudflare'
 author = 'Cloudflare'
 

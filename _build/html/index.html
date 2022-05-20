@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to the Cloudflare Zero Trust Hands-on Workshop! &mdash; cf-connect-2022  documentation</title>
+  <title>Welcome to the Cloudflare Zero Trust Hands-on Workshop! &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,7 +18,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setup Github" href="github.html" /> 
+    <link rel="next" title="Setup Git" href="git.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -26,7 +26,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="#" class="icon icon-home"> cf-connect-2022
+            <a href="#" class="icon icon-home"> Cloudflare ZT Wrkshp - London
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -38,17 +38,13 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Pre-Requisites:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="github.html">Setup Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">Setup Git</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Setup Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="npm.html">Setup Node Package Manager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Cloudflare Pages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Cloudflare Images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Cloudflare Workers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Cloudflare Zero Trust Gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page1.html">Retrieve your lab identifier and resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page2.html">Cloudflare Zero Trust Gateway</a></li>
 </ul>
 
         </div>
@@ -57,7 +53,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">cf-connect-2022</a>
+          <a href="#">Cloudflare ZT Wrkshp - London</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -80,27 +76,14 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Pre-Requisites:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="github.html">Setup Github</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="github.html#install-github-cli">Install Github CLI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="github.html#login-to-github-cli">Login to Github CLI</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="git.html">Setup Git</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="git.html#macos">MacOS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git.html#linux">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git.html#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="python.html">Setup Python</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="python.html#macos">MacOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#linux">Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python.html#windows">Windows</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="npm.html">Setup Node Package Manager</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="npm.html#macos">MacOS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npm.html#linux">Linux</a></li>
-<li class="toctree-l2"><a class="reference internal" href="npm.html#windows">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cfacct.html#skip-this-step-if-you-already-have-a-cloudflare-account-with-the-email-provided-before-the-lab">Skip this step if you already have a Cloudflare account with the email provided before the lab</a></li>
 </ul>
 </li>
 </ul>
@@ -108,33 +91,14 @@
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 1 - Cloudflare Pages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#clone-github-repository">Clone GitHub Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#deploy-pages-project-from-github-repository">Deploy Pages Project from GitHub Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#using-functions-with-cloudflare-pages">Using Functions with Cloudflare Pages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#creating-and-binding-kv-store">Creating and Binding KV store</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#generate-api-tokens-for-account-images">Generate API tokens for account - Images</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#generate-api-tokens-for-account-workers-service">Generate API tokens for account Workers’ Service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab1.html#upload-images-and-store-metadata-into-kv">Upload images and store metadata into KV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page1.html">Retrieve your lab identifier and resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="page1.html#get-your-lab-id">Get your lab ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page1.html#gather-your-lab-resources">Gather your lab resources</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2 - Cloudflare Images</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lab2.html#guided-hands-on-experience">Guided Hands-On Experience</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2.html#clone-repository">Clone Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2.html#prepare-repo-for-script-execution">Prepare Repo for script execution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2.html#upload-images">Upload Images</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 3 - Cloudflare Workers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lab3.html#pre-lab-notes">Pre-Lab Notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab3.html#setup-basic-web-application">Setup Basic Web Application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab3.html#write-a-b-testing-function">Write A/B Testing Function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab3.html#testing-the-code-locally-before-deploying">Testing the Code Locally before Deploying</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 4 - Cloudflare Zero Trust Gateway</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="lab4.html#setup-docker-environment">Setup Docker Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4.html#deploy-dns-server-cloudflare-tunnel-for-doh">Deploy DNS Server &amp; Cloudflare Tunnel for DoH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page2.html">Cloudflare Zero Trust Gateway</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="page2.html#setup-docker-environment">Setup Docker Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="page2.html#deploy-dns-server-cloudflare-tunnel-for-doh">Deploy DNS Server &amp; Cloudflare Tunnel for DoH</a></li>
 </ul>
 </li>
 </ul>
@@ -145,7 +109,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="github.html" class="btn btn-neutral float-right" title="Setup Github" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="git.html" class="btn btn-neutral float-right" title="Setup Git" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

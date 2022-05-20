@@ -11,18 +11,12 @@ Welcome to the Cloudflare Zero Trust Hands-on Workshop!
    :caption: Pre-Requisites:
    :maxdepth: 2
 
-   github.md
    git.md
-   python.md
-   npm.md
-
+   cfacct.md
 
 .. toctree::
    :caption: Lab Exercises:
    :maxdepth: 2
 
-   lab1.md
-   lab2.md
-   lab3.md
-   lab4.md
-
+   page1.md
+   page2.md

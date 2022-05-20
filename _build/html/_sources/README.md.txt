@@ -1,2 +1,2 @@
-# connect_2022_labs
-Instructions of Hands On Labs Cloudflare Connect 2022
+# Cloudflare Zero Trust Workshop
+Instructions of Hands On Labs
