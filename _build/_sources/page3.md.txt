@@ -10,7 +10,7 @@ Open the Microsoft RDP client, connect to the hypervisor using the `gateway-env`
 
 ```
 username: cloudflare
-password: #savetheinternet
+password: #Savetheinternet
 ```
 
 ## Install WARP for Windows
