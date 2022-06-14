@@ -4,9 +4,7 @@
 
 If you don’t have an RDP client installed on your laptop, download the Microsoft Remote Desktop client (for [Windows](https://apps.microsoft.com/store/detail/microsoft-remote-desktop/9WZDNCRFJ3PS) or [Mac](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)).
 
-In your DNS zone, one of the records looks like this: `[gateway-env.rdp.](https://gateway-env.rdp.confused-cherry.cfiq.io)<LAB_SLUG>.cfiq.io`
-
-Open the Microsoft RDP client, connect to the hypervisor using the `gateway-env` hostname
+Open the Microsoft RDP client, connect to the hypervisor using either the `gateway-env` hostname ( `gateway-env.rdp.confused-cherry.cfiq.io)`) or the IP address attached to the A record. 
 
 ```
 username: cloudflare
