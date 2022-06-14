@@ -4,10 +4,15 @@
 
 2. Block content categories which go against your organization’s acceptable use policy.
 
-Selector | Operator | Value | Action
-Application | in | Netflix | Block
+Selector | Application
 
-![new-dns-policy](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/FILENAME.png)
+Operator | in
+
+Value | Streaming
+
+Action | Block
+
+![new-dns-policy](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/ZT%20Workshop%20Page%204%20-%20Create%20Policy.png)
 
 3. Save the Policy, and after a few moments try to access www.netflix.com. You should get a block page
 
@@ -15,8 +20,13 @@ Application | in | Netflix | Block
 
 1. Now, navigate to the HTTP Submenu. We're going to create another policy that deals with tenant control. We will be controlling access to Google. With our policy builder, it should look something like this:
 
-Selector | Operator | Value | Action
-Application | in | Google Workspace | Allow
+Selector | Application
+
+Operator | in
+
+Value | Google Workspace
+
+Action | Allow
 
 2. However, we're going to add another section at the bottom here, which controls the instance. We'll add a header to our request here, and set X-Googapps-Allowed-Domains to Cloudflare.com. This will make all other instances of Google Workspace inaccessible. 
 
@@ -28,8 +38,13 @@ Application | in | Google Workspace | Allow
 
 1. Once you've tested your HTTP tenant control policy, let's go ahead and build a new Remote Browser Isolation policy. We're going to isolate all websites that your browser navigates to. Our initial selector should look like this.
 
-Selector | Operator | Value | Action
-Domain | in | .* | Isolate
+Selector | URL
+
+Operator | matches regex
+
+Value | .*
+
+Action | Isolate
 
 2. Below that, we will also enable Data Protection Controls on this policy. This will prevent certain actions like copy/paste, printing, uploads and downloads for your isolated session. 
 
