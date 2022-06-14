@@ -21,4 +21,5 @@ Welcome to the Cloudflare Zero Trust Hands-on Workshop!
    page2.md
    page3.md
    page4.md
+   Page6.md
 
