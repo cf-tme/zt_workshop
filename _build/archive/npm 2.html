@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Setup Python &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
+  <title>Setup Node Package Manager &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -44,10 +44,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../page1.html">Getting started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../page2.html">Configure identity provider</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../page3.html">Configure Cloudflare Gateway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../page4.html">Create a Gateway DNS policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../page4.html#create-a-gateway-http-policy">Create a Gateway HTTP Policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../page4.html#create-a-remote-browser-isolation-policy">Create a Remote Browser Isolation policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../page4.html#congratulations-you-ve-reached-the-end-of-the-lab">Congratulations! You’ve reached the end of the lab.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../page4.html">Create a Gateway policy</a></li>
 </ul>
 
         </div>
@@ -64,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Setup Python</li>
+      <li>Setup Node Package Manager</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/archive/python.md.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/archive/npm.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -74,9 +71,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="setup-python">
-<h1>Setup Python<a class="headerlink" href="#setup-python" title="Permalink to this headline"></a></h1>
-<p>Python will be used in Lab 2 to make API calls to Cloudflare</p>
+  <section id="setup-node-package-manager">
+<h1>Setup Node Package Manager<a class="headerlink" href="#setup-node-package-manager" title="Permalink to this headline"></a></h1>
+<p>npm will be used in Lab 3 to setup a local test environment to rapidly debug</p>
 <section id="macos">
 <h2>MacOS<a class="headerlink" href="#macos" title="Permalink to this headline"></a></h2>
 <p><strong>Install Homebrew:</strong></p>
@@ -85,42 +82,40 @@
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>/bin/bash -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
 </pre></div>
 </div>
-<p><strong>Install Python3:</strong></p>
+<p><strong>Install npm:</strong></p>
 <p>In a terminal window enter:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew install python3
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew install node
 </pre></div>
 </div>
 </section>
 <section id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline"></a></h2>
-<p>Installation of Python3 can be done with the built in package managers on most all linux distributions - to cover common use cases the steps below are for Debian and CentOS</p>
+<p>Installation of Node can be done with the built in package managers on most all linux distributions - to cover common use cases the steps below are for Debian and CentOS</p>
 <p><strong>Debian, Ubuntu Linux, Raspberry Pi OS (apt)</strong></p>
-<p>Python 3 may already be installed on your distribution if not run:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt-get install python3
-sudo apt install python3-pip
+<p>Node may already be installed on your distribution if not run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt install nodejs
+sudo apt install npm
 </pre></div>
 </div>
 <p><strong>Fedora, CentOS, Red Hat Enterprise Linux (dnf)</strong></p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo dnf install python3
-sudo dnf install python3-pip
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo dnf module install nodejs
 </pre></div>
 </div>
 </section>
 <section id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline"></a></h2>
-<p>Installation of Python3 can be done with powershell winget package manager. Open PowerShell and enter the following installation command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>winget install -e --id Python.Python.3
+<p>Installation of Node can be done with powershell winget package manager. Open PowerShell and enter the following installation command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>winget install -e --id OpenJS.NodeJS
 </pre></div>
 </div>
 <p>If prompted enter <em>Y</em> to approve installation</p>
 <p>Once installation is complete you must add Python3 installation to the Windows PATH:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">$Env</span>:PATH +<span class="o">=</span> <span class="s2">&quot;;%userprofile%\AppData\Local\Programs\Python\Python310&quot;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">$Env</span>:PATH +<span class="o">=</span> <span class="s2">&quot;;C:\Program Files\nodejs\node_modules\npm\bin&quot;</span>
 </pre></div>
 </div>
-<p>#Install</p>
 <div class="note admonition">
-<p class="admonition-title">Python 3 Setup Complete! </p>
-<p>You have successfully setup Python! Lets Get Started with the Labs!</p>
+<p class="admonition-title">npm Setup Complete! </p>
+<p>You have successfully setup npm! Lets Get Started with the Labs!</p>
 </div>
 </section>
 </section>

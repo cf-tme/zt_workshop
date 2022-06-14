@@ -1,0 +1,29 @@
+# Configure identity provider
+
+Open the Zero Trust Dashboard:
+![ztdb.jpg](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/Screenshot%20Home%20%20CF%20ZT%20Lab%20-%20chunky-photo%20%20Cloudflare%202022-06-14%20at%2006.02%20prfpmE96.jpg)
+
+## Navigate to the Authentication secton
+
+1. In the Zero Trust dashboard, navigate to Settings > Authentication.
+
+2. In the Login methods card, click Add new.
+
+![saml.gif](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/Screenshot%20Cloudflare%20Zero%20Trust%202022-06-11%20at%2009.36%209yriuMlG.gif)
+
+## Create SAML provider
+
+As part of this lab, we created a SAML-based IdP named TS2 (Trusted SAML Server). TS2 is designed to mock a small organization. It has both admins (which is your role in this lab) and fake users (which we’re not going to do anything with right now).
+
+1. Select the **SAML** option and note the metadata import box on the callout:
+   ![metadata_upload.png](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/Screenshot%20Settings%20-%20Cloudflare%20Zero%20Trust%202022-06-14%20at%2006.14%20w5nqfq7L.jpg)
+
+2. To retrieve your metadata file, go here: `https://sso.samlserver.net/api/v3/providers/saml/<LAB_SLUG>/metadata/?download`
+
+3. Drag and drop the metadata file into the GUI
+
+4. Press **Test** at the bottom of the page
+
+```{admonition} Note
+You can add multiple identity providers - including multiple providers of the same type
+```
