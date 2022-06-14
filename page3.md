@@ -19,8 +19,9 @@ password: #Savetheinternet
 2. Navigate to your predefined download folder and open the executable file to install WARP.
 3. Follow the instructions to complete installation. Cloudflare WARP will automatically launch and appear in your menu bar with the Cloudflare logo.
 4. Click Next and Accept Cloudflare’s privacy policy.
-5. Turn on the toggle to enable WARP.
-6. WARP is now running
+5. DO NOT Toggle WARP right now, as you need to sign in first. Select preferences >> account >> sign into Cloudflare Zero Trust
+6. Authenticate to your specific account via OTP
+7. WARP is now running.
 
 ## Install the Cloudflare Root Certificate
 
