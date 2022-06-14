@@ -9,8 +9,8 @@ In your DNS zone, one of the records looks like this: `[gateway-env.rdp.](https:
 Open the Microsoft RDP client, connect to the hypervisor using the `gateway-env` hostname
 
 ```
-username: admin
-password: admin
+username: cloudflare
+password: #savetheinternet
 ```
 
 ## Install WARP for Windows
