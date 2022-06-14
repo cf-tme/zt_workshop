@@ -17,9 +17,7 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Configure Cloudflare Gateway" href="page3.html" />
-    <link rel="prev" title="Getting started" href="page1.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,20 +38,6 @@
               <p class="caption" role="heading"><span class="caption-text">Pre-Requisites:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="page1.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure identity provider</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#navigate-to-the-authentication-secton">Navigate to the Authentication secton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-saml-provider">Create SAML provider</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="page3.html">Configure Cloudflare Gateway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html">Create a Gateway DNS policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-gateway-http-policy">Create a Gateway HTTP Policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-remote-browser-isolation-policy">Create a Remote Browser Isolation policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#congratulations-you-ve-reached-the-end-of-the-lab">Congratulations! You’ve reached the end of the lab.</a></li>
 </ul>
 
         </div>
@@ -108,14 +92,26 @@
 </div>
 </section>
 </section>
+<section id="enable-one-time-pin-as-an-authentication-method">
+<h1>Enable One Time Pin as an Authentication Method<a class="headerlink" href="#enable-one-time-pin-as-an-authentication-method" title="Permalink to this headline"></a></h1>
+<p>Once you’re done with that, go back to the add Authentication menu and select One Time Pin from the options. You’ll need this later to sign into your account on the Gateway Lab device.</p>
+</section>
+<section id="create-a-default-location-for-your-account">
+<h1>Create a Default Location for your account<a class="headerlink" href="#create-a-default-location-for-your-account" title="Permalink to this headline"></a></h1>
+<p>Next, go into Gateway &gt;&gt; Locations, and create a default location. You won’t need to add a source IP, so just delete that part. You’ll need this to enable DNS policies on your Zero Trust Account.</p>
+<p><img alt="default-location-policy" src="https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/Image%206-14-22%20at%207.57%20AM.jpg" /></p>
+</section>
+<section id="configure-device-enrollment-policy-for-device-client-warp">
+<h1>Configure Device Enrollment Policy for device client (WARP)<a class="headerlink" href="#configure-device-enrollment-policy-for-device-client-warp" title="Permalink to this headline"></a></h1>
+<p>Finally, go to Settings &gt;&gt; Devices &gt;&gt; Manage Enrollment Permissions. Youll need to do this to sign into your organization with the device client in later steps.</p>
+<p>Create a new rule enabling emails ending in (your email address).</p>
+<p>Once that rule is created, go to the Authentication tab, and select One Time Pin (OTP) as an authentication method.</p>
+</section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="page1.html" class="btn btn-neutral float-left" title="Getting started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="page3.html" class="btn btn-neutral float-right" title="Configure Cloudflare Gateway" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

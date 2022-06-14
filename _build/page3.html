@@ -17,9 +17,7 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Create a Gateway DNS policy" href="page4.html" />
-    <link rel="prev" title="Configure identity provider" href="page2.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,21 +38,6 @@
               <p class="caption" role="heading"><span class="caption-text">Pre-Requisites:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="page1.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page2.html">Configure identity provider</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configure Cloudflare Gateway</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#connect-to-the-gateway-virtual-desktop-over-rdp">Connect to the Gateway Virtual Desktop over RDP</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-warp-for-windows">Install WARP for Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#install-the-cloudflare-root-certificate">Install the Cloudflare Root Certificate</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html">Create a Gateway DNS policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-gateway-http-policy">Create a Gateway HTTP Policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-remote-browser-isolation-policy">Create a Remote Browser Isolation policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#congratulations-you-ve-reached-the-end-of-the-lab">Congratulations! You’ve reached the end of the lab.</a></li>
 </ul>
 
         </div>
@@ -86,8 +69,7 @@
 <section id="connect-to-the-gateway-virtual-desktop-over-rdp">
 <h2>Connect to the Gateway Virtual Desktop over RDP<a class="headerlink" href="#connect-to-the-gateway-virtual-desktop-over-rdp" title="Permalink to this headline"></a></h2>
 <p>If you don’t have an RDP client installed on your laptop, download the Microsoft Remote Desktop client (for <a class="reference external" href="https://apps.microsoft.com/store/detail/microsoft-remote-desktop/9WZDNCRFJ3PS">Windows</a> or <a class="reference external" href="https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12">Mac</a>).</p>
-<p>In your DNS zone, one of the records looks like this: <code class="docutils literal notranslate"><span class="pre">[gateway-env.rdp.](https://gateway-env.rdp.confused-cherry.cfiq.io)&lt;LAB_SLUG&gt;.cfiq.io</span></code></p>
-<p>Open the Microsoft RDP client, connect to the hypervisor using the <code class="docutils literal notranslate"><span class="pre">gateway-env</span></code> hostname</p>
+<p>Open the Microsoft RDP client, connect to the hypervisor using either the <code class="docutils literal notranslate"><span class="pre">gateway-env</span></code> hostname ( <code class="docutils literal notranslate"><span class="pre">gateway-env.rdp.confused-cherry.cfiq.io)</span></code>) or the IP address attached to the A record.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="p">:</span> <span class="n">cloudflare</span>
 <span class="n">password</span><span class="p">:</span> <span class="c1">#Savetheinternet</span>
 </pre></div>
@@ -100,8 +82,9 @@
 <li><p>Navigate to your predefined download folder and open the executable file to install WARP.</p></li>
 <li><p>Follow the instructions to complete installation. Cloudflare WARP will automatically launch and appear in your menu bar with the Cloudflare logo.</p></li>
 <li><p>Click Next and Accept Cloudflare’s privacy policy.</p></li>
-<li><p>Turn on the toggle to enable WARP.</p></li>
-<li><p>WARP is now running</p></li>
+<li><p>DO NOT Toggle WARP right now, as you need to sign in first. Select preferences &gt;&gt; account &gt;&gt; sign into Cloudflare Zero Trust</p></li>
+<li><p>Authenticate to your specific account via OTP</p></li>
+<li><p>WARP is now running.</p></li>
 </ol>
 </section>
 <section id="install-the-cloudflare-root-certificate">
@@ -138,10 +121,7 @@ First, download the Cloudflare certificate. The certificate is available both as
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="page2.html" class="btn btn-neutral float-left" title="Configure identity provider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="page4.html" class="btn btn-neutral float-right" title="Create a Gateway DNS policy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

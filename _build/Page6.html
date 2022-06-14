@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reach the Access Lab &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
+  <title>SSH access to the lab &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -39,16 +39,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="page1.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page2.html">Configure identity provider</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page3.html">Configure Cloudflare Gateway</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html">Create a Gateway DNS policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-gateway-http-policy">Create a Gateway HTTP Policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-remote-browser-isolation-policy">Create a Remote Browser Isolation policy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="page4.html#congratulations-you-ve-reached-the-end-of-the-lab">Congratulations! You’ve reached the end of the lab.</a></li>
-</ul>
 
         </div>
       </div>
@@ -64,7 +54,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Reach the Access Lab</li>
+      <li>SSH access to the lab</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Page6.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -74,27 +64,95 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="reach-the-access-lab">
-<h1>Reach the Access Lab<a class="headerlink" href="#reach-the-access-lab" title="Permalink to this headline"></a></h1>
+  <p>#Cloudflare Zero Trust Network Access Lab
+Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applications to Cloudflare over a single tunnel via our app connector Cloudflare Tunnel, and applying Zero Trust rules on top of your application after onboarding it to Cloudflare Access.</p>
+<section id="ssh-access-to-the-lab">
+<h1>SSH access to the lab<a class="headerlink" href="#ssh-access-to-the-lab" title="Permalink to this headline"></a></h1>
+<p>Start by opening either powershell or terminal (Windows/Mac, respectively). We’ll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you’ll need to access the system.</p>
+<p>[rsa-private-key](/</p>
+<p>if you can’t download this file, here are some instructions for getting it onto your device.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>open your favorite text editor and copy/paste the above text into it.</p></li>
+<li><p>once that’s done, save the file without an extension (Generally it’s okay if it has an extension but best practice is to save it without one)</p></li>
+</ul>
+<p>Run the following command in powershell/terminal to access with the username+password cloudflare #savetheinternet</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh -i <span class="o">[</span>privatekey file<span class="o">]</span> cloudflare@&lt;lab-slug&gt;.cfiq.io
+</pre></div>
+</div>
+<p>Now you have SSH access to your device.</p>
 </section>
-<section id="get-cli-access-to-your-vms">
-<h1>Get CLI Access to your VMs<a class="headerlink" href="#get-cli-access-to-your-vms" title="Permalink to this headline"></a></h1>
-<p>For this section, open up your two ubuntu VMs and make sure that you can access the CLI.</p>
+<section id="create-a-tunnel-for-jira">
+<h1>Create a tunnel for Jira<a class="headerlink" href="#create-a-tunnel-for-jira" title="Permalink to this headline"></a></h1>
+<p>Keep that SSH terminal up, but go back to your Zero Trust dashboard.</p>
+<p>Select Access &gt;&gt; Tunnels and create a brand new tunnel. Name it whatever you’d like.</p>
+<p>[image-of-tunnel-dash]</p>
+<p>Next, you’ll see the following screen. These are pre-baked commands that you’ll need to copy into your SSH terminal in order to establish connectivity to Cloudflare. When you do, you’ll see your device pop up in the ‘connectors’ screen.</p>
+<p>[image-of-tunnel-connectors]</p>
+<p>Once you see your server appear there, go to the next page.</p>
+<p>Here, you’re going to configure your public-facing hostname and the service it’ll run. Since we’re configuring jira, I’ve called my hostname jira.ancient-uncle.cfiq.io</p>
+<p>The service will be HTTP localhost:8000</p>
+<p>[image-of-tunnel-hostname-config]</p>
+<p>Save the tunnel once you’ve entered that in.</p>
 </section>
-<section id="install-jira-from-docker-image-on-ubuntu-1">
-<h1>Install JIRA from Docker Image on Ubuntu-1<a class="headerlink" href="#install-jira-from-docker-image-on-ubuntu-1" title="Permalink to this headline"></a></h1>
+<section id="onboard-jira-to-cloudflare-access">
+<h1>Onboard Jira to Cloudflare Access<a class="headerlink" href="#onboard-jira-to-cloudflare-access" title="Permalink to this headline"></a></h1>
+<p>Now that you have the tunnel, let’s go to Cloudflare Access and onboard our first application.</p>
+<p>Add an application, and select “Self-Hosted” from the options available</p>
+<p>[image-of-app-types]</p>
+<p>Then, fill in the following information</p>
+<ul class="simple">
+<li><p>on the first page, enter the application name, and then the domain + hostname (subdomain) you configured for your tunnel
+[image-of-page-1]</p></li>
+<li><p>on the next page, set up who has access to this application. For the purposes of this exercise, only enter your own email into the ‘include’ field.
+[image-of-page-2]</p></li>
+<li><p>then, for the final page, no additional configuration is required. go ahead and save the application. If you don’t see your VM on the Access page, refresh it.</p></li>
+</ul>
 </section>
-<section id="configure-jira-app-connector">
-<h1>Configure JIRA App Connector<a class="headerlink" href="#configure-jira-app-connector" title="Permalink to this headline"></a></h1>
+<section id="test-access-to-jira">
+<h1>Test access to Jira<a class="headerlink" href="#test-access-to-jira" title="Permalink to this headline"></a></h1>
+<p>We’ve configured Jira, but let’s try and access it now. Navigate to the domain you onboarded to cloudflare (in this example, jira.ancient-uncle.cfiq.io). You should reach a Cloudflare Access login page.</p>
 </section>
-<section id="configure-browser-based-ssh-app-connector">
-<h1>Configure Browser-Based SSH App Connector<a class="headerlink" href="#configure-browser-based-ssh-app-connector" title="Permalink to this headline"></a></h1>
+<section id="add-another-application-to-your-tunnel">
+<h1>Add another application to your tunnel<a class="headerlink" href="#add-another-application-to-your-tunnel" title="Permalink to this headline"></a></h1>
 </section>
-<section id="create-zt-rules-for-jira">
-<h1>Create ZT rules for JIRA<a class="headerlink" href="#create-zt-rules-for-jira" title="Permalink to this headline"></a></h1>
+<section id="onboard-juiceshop-to-cloudflare-access">
+<h1>Onboard Juiceshop to Cloudflare Access<a class="headerlink" href="#onboard-juiceshop-to-cloudflare-access" title="Permalink to this headline"></a></h1>
 </section>
-<section id="create-zt-rules-for-browser-based-ssh">
-<h1>Create ZT rules for Browser-Based SSH<a class="headerlink" href="#create-zt-rules-for-browser-based-ssh" title="Permalink to this headline"></a></h1>
+<section id="test-access-to-juiceshop">
+<h1>Test access to Juiceshop<a class="headerlink" href="#test-access-to-juiceshop" title="Permalink to this headline"></a></h1>
+</section>
+<section id="add-a-private-ip-route-to-your-tunnel">
+<h1>Add a Private IP route to your tunnel<a class="headerlink" href="#add-a-private-ip-route-to-your-tunnel" title="Permalink to this headline"></a></h1>
+</section>
+<section id="onboard-private-ip-application-to-cloudflare-access">
+<h1>Onboard Private IP application to Cloudflare Access<a class="headerlink" href="#onboard-private-ip-application-to-cloudflare-access" title="Permalink to this headline"></a></h1>
+</section>
+<section id="test-access-to-private-ip-application">
+<h1>Test access to Private IP application<a class="headerlink" href="#test-access-to-private-ip-application" title="Permalink to this headline"></a></h1>
+</section>
+<section id="zt-rule-exercise-geographic-location">
+<h1>ZT Rule Exercise - Geographic Location<a class="headerlink" href="#zt-rule-exercise-geographic-location" title="Permalink to this headline"></a></h1>
+</section>
+<section id="enabling-clientless-rbi">
+<h1>Enabling Clientless RBI<a class="headerlink" href="#enabling-clientless-rbi" title="Permalink to this headline"></a></h1>
+</section>
+<section id="zt-rule-exercise-gateway">
+<h1>ZT Rule Exercise - Gateway<a class="headerlink" href="#zt-rule-exercise-gateway" title="Permalink to this headline"></a></h1>
+</section>
+<section id="add-browser-based-ssh-app-to-tunnel">
+<h1>Add Browser-Based SSH app to tunnel<a class="headerlink" href="#add-browser-based-ssh-app-to-tunnel" title="Permalink to this headline"></a></h1>
+</section>
+<section id="onboard-browser-based-ssh-application-to-cloudflare-access">
+<h1>Onboard Browser-Based SSH application to Cloudflare Access<a class="headerlink" href="#onboard-browser-based-ssh-application-to-cloudflare-access" title="Permalink to this headline"></a></h1>
+</section>
+<section id="access-browser-based-ssh-application">
+<h1>Access Browser-Based SSH application<a class="headerlink" href="#access-browser-based-ssh-application" title="Permalink to this headline"></a></h1>
+</section>
+<section id="congrats-you-re-done-great-job">
+<h1>Congrats! you’re done. great job!<a class="headerlink" href="#congrats-you-re-done-great-job" title="Permalink to this headline"></a></h1>
 </section>
 
 

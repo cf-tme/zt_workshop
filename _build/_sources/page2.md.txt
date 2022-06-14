@@ -27,3 +27,20 @@ As part of this lab, we created a SAML-based IdP named TS2 (Trusted SAML Server)
 ```{admonition} Note
 You can add multiple identity providers - including multiple providers of the same type
 ```
+# Enable One Time Pin as an Authentication Method
+
+Once you're done with that, go back to the add Authentication menu and select One Time Pin from the options. You'll need this later to sign into your account on the Gateway Lab device.
+
+# Create a Default Location for your account
+
+Next, go into Gateway >> Locations, and create a default location. You won't need to add a source IP, so just delete that part. You'll need this to enable DNS policies on your Zero Trust Account. 
+
+![default-location-policy](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/Image%206-14-22%20at%207.57%20AM.jpg)
+
+# Configure Device Enrollment Policy for device client (WARP)
+
+Finally, go to Settings >> Devices >> Manage Enrollment Permissions. Youll need to do this to sign into your organization with the device client in later steps.
+
+Create a new rule enabling emails ending in (your email address).
+
+Once that rule is created, go to the Authentication tab, and select One Time Pin (OTP) as an authentication method.
