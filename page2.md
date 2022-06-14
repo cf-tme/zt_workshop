@@ -33,6 +33,12 @@ Once you're done with that, go back to the add Authentication menu and select On
 
 # Create a Default Location for your account
 
-Finally, go into Gateway >> Locations, and create a default location. You won't need to add a source IP, so just delete that part. You'll need this to enable DNS policies on your Zero Trust Account.
+Next, go into Gateway >> Locations, and create a default location. You won't need to add a source IP, so just delete that part. You'll need this to enable DNS policies on your Zero Trust Account.
 
 ![default-location-policy](https://storage.franktaylor.io/a40d5545ab9b313238282d8dc55c33ec34a87f1b/Image%206-14-22%20at%207.57%20AM.jpg)
+
+# Configure Device Enrollment Policy for device client (WARP)
+
+Finally, go to Settings >> Devices >> Manage Enrollment Permissions. Youll need to do this to sign into your organization with the device client in later steps.
+
+Create a new rule enabling emails ending in (your email address).
