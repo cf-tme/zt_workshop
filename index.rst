@@ -19,5 +19,6 @@ Welcome to the Cloudflare Zero Trust Hands-on Workshop!
    :maxdepth: 2
 
    Page6.md
+   area1.md
 
 
