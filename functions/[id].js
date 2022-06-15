@@ -46,9 +46,7 @@ export async function onRequestGet({ params, request }) {
 
   if (slug) {
     let body = `
-      <pre><b>Lab SSH credentials:</b>\nssh -i [privatekey file] cloudflare@${slug}.cf-tme.com\n<a href="https://zt-access-london-lab.cf-tme.workers.dev/">Download private key here</a>
-      <b>Lab RDP credentials (Access):</b>\nssh -i [privatekey file] cloudflare@${slug}.cf-tme.com\n<a href="https://zt-access-london-lab.cf-tme.workers.dev/">Download private key here</a>
-      </pre>
+      <pre><b>Lab SSH credentials:</b>\nssh -i [privatekey file] cloudflare@${slug}.cf-tme.com\n<a href="https://zt-access-london-lab.cf-tme.workers.dev/">Download private key here</a></pre>
     `
     return new Response(body, { headers: { "id": params.id, "Content-Type": "text/html" } })
   }
