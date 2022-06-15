@@ -131,6 +131,8 @@ Instead of selecting an 'include' rule, we're instead going to add a 'require' r
 
 We'll add authentication method and select multi-factor authentication. Save this rule, and then save the application.
 
+![pic-add-posture](./zt-access-screencaps/device-posture-rules.png)
+
 Try and log into Jira again. This time it should fail, because your account doesn't have any 2FA methods attached to them.
 
 
@@ -153,8 +155,6 @@ Next, go to My Team >> Devices >> Device Posture
 ![pic-of-Device-Posture](./zt-access-screencaps/my-team-device-posture.png)
 
 Then, add a device posture element, and select gateway from the options.
-
-![pic-add-posture](./zt-access-screencaps/device-posture-rules.png)
 
 ## ZT Rule Exercise - Gateway
 
