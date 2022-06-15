@@ -1,8 +1,4 @@
-addEventListener("fetch", (event) => {
-  event.respondWith(handleRequest(event.request));
-});
-
-async function handleRequest(request) {
+async function onRequestGet({ params, request }) {
   let slugs = [
     "ancient-uncle",
     "awful-movie",
@@ -51,6 +47,7 @@ async function handleRequest(request) {
     return new Response(body, {
       headers: {
         "Content-Type": "text/html",
+        id: params.id,
       },
     });
   }
