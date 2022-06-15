@@ -8,7 +8,7 @@ First you will need a private key to access the VMs to do this securely you will
 
 1. open your favorite text editor 
 2. create a new empty file 
-3. paste the contents from [here](https://lab-access.cf-tme.com)
+3. paste the contents from [here](https://zt-access-london-lab.cf-tme.workers.dev/)
 4. save the file locally with filename `id_rsa`
 ```{admonition} File Extension
 :class: warning
