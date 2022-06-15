@@ -18,7 +18,7 @@ Be aware that some text editors will try to give the file an extension (eg. txt)
 Run the following command in powershell/terminal to access with the username+password cloudflare `#savetheinternet`
 
 ```sh
-ssh -i [privatekey file] cloudflare@<lab-slug>.cfiq.io
+ssh -i [privatekey file] cloudflare@<lab-slug>.cf-tme.com
 ```
 
 Replace <lab-slug> with your assigned name. You should have SSH access to your device.
