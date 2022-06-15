@@ -38,18 +38,20 @@ async function onRequestGet({ params, request }) {
     "shiny-version",
     "silly-effort",
     "smiling-union",
-    "solid-airport",
-  ];
-  let url = new URL(request.url);
+    "solid-airport"
+  ]
+  let url = new URL(request.url)
+  
+  let slug = slugs.find(slug => slug === url.pathname.split('/')[1])
 
-  if (slugs.some(url.pathname.split("/")[1])) {
-    let body = `<pre>\nLab SSH credentials:\nssh -i [privatekey file] cloudflare@${slug}.cf-tme.com<a href="https://zt-access-london-lab.cf-tme.workers.dev/">Download private key here</a></pre>`;
-    return new Response(body, {
-      headers: {
-        "Content-Type": "text/html",
-        id: params.id,
-      },
-    });
+  if (slug) {
+    let body = `
+      <pre><b>Lab SSH credentials:</b>\nssh -i [privatekey file] cloudflare@${slug}.cf-tme.com\n<a href="https://zt-access-london-lab.cf-tme.workers.dev/">Download private key here</a>
+      <b>Lab RDP credentials (Access):</b>\nssh -i [privatekey file] cloudflare@${slug}.cf-tme.com\n<a href="https://zt-access-london-lab.cf-tme.workers.dev/">Download private key here</a>
+      </pre>
+    `
+    return new Response(body, { headers: { "id": params.id, "Content-Type": "text/html" } })
   }
-  return fetch(request);
+  return fetch(request)
 }
+
