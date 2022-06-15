@@ -4,7 +4,7 @@ Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applicat
 ## SSH access to the lab
 Start by opening either powershell or terminal (Windows/Mac, respectively). We'll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you'll need to access the system. 
 
-[rsa-private-key](/
+[rsa-private-key]
 
 
 if you can't download this file, here are some instructions for getting it onto your device.
@@ -65,25 +65,80 @@ Then, fill in the following information
 ## Test access to Jira
 We've configured Jira, but let's try and access it now. Navigate to the domain you onboarded to cloudflare (in this example, jira.ancient-uncle.cfiq.io). You should reach a Cloudflare Access login page.
 
+[image-of-cf-access-login-page]
 
+Use your OTP to authenticate to the application.
+
+[image-of-jira-setup-page]
 
 ## Add another application to your tunnel
 
+Now, go back into tunnel and edit your existing tunnel configuration. Above the existing hostname you configured, select 'add hostname'
+
+[image-of-re-edited-tunnel]
+
+We're going to add an application called Juiceshop. Name your subdomain Juiceshop and set the service as HTTP localhost:3000 and save it
+
+[image-of-juiceshop-config]
+
 ## Onboard Juiceshop to Cloudflare Access
+
+You've added a service to your existing tunnel, but you still need to add a new applcation in Cloudflare Access. Go ahead and repeat the process for adding a self-hosted application, but this time call it Juiceshop instead. 
 
 ## Test access to Juiceshop
 
+Try and log into juiceshop.<enter-lab-slug>.cfiq.io. The process should be nearly identical to the last application. The purpose of this is to highlight that you can run multiple web-based applications over Cloudflare Tunnel using any port number.
+
 ## Add a Private IP route to your tunnel
+
+Next, we're going to add a Private IP as an application to Cloudflare Access. Go back to the tunnel you just modified and edit it again. Instead of adding a hostname, you'll need to add a private IP instead. When you're on the appropriate page, go back to your open SSH terminal and run an ifconfig.
+
+Find your device's 10.10.0.0/24 IP address and add it as a /32 (example: 10.10.0.3/32). Save the tunnel again.
 
 ## Onboard Private IP application to Cloudflare Access 
 
+Add a Private IP application in Cloudflare Access now. You'll be redirected to a different page than before. Fill in the private IP you documented in the tunnel, and continue. This will bring you to a new set of rules.
+
+
+
+These rules require no editing, you can simply save the application now
+
 ## Test access to Private IP application
+
+Inside the Gateway Lab you configured yesterday, turn on Cloudflare Zero Trust and type in the private IP address of your application. You should be able to access it, even though it's on a completely different network
 
 ## ZT Rule Exercise - Geographic Location
 
+Now, go back to your ZT dashboard. We're going to apply a device posture rule to your Jira application. Device posture rules can be found in the same area where you included your email in the application (so edit Jira ) 
+
+[pic-of-rules-page]
+
+Instead of selecting an 'include' rule, we're instead going to add a 'require' rule. 
+
+[pic-of-rule-being-applied]
+
+We'll add authentication method and select multi-factor authentication. Save this rule, and then save the application.
+
+Try and log into Jira again. This time it should fail, because your account doesn't have any 2FA methods attached to them. 
+
 ## Enabling Clientless RBI
 
+Now, we're going to use device posture rules in service of an interesting use case. To do this, however, we'll need to add a new function to your account. 
+
+Go to Settings >> Browser Isolation.
+
+[pic-of-RBI-clientless-enablement-page]
+
+Turn on Clientless Browser Isolation, then manage your Clientless RBI Rules
+
+[pic-of-RBI-rule-generation]
+
+Add a rule that allows your email address to authenticate to Cloudflare's Clientless RBI service.
+
 ## ZT Rule Exercise - Gateway
+
+Go back and edit your Jira policy, and try to 
+
 
 ## Add Browser-Based SSH app to tunnel
 
