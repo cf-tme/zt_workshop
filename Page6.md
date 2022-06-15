@@ -121,7 +121,7 @@ These rules require no editing, you can simply save the application now
 
 Inside the Gateway Lab you configured yesterday, turn on Cloudflare Zero Trust and type in the private IP address of your application. You should be able to access it via the private IP, even though it's on a completely different network.
 
-## ZT Rule Exercise - Geographic Location
+## ZT Rule Exercise - Multi-Factor Authentication
 
 Now, go back to your ZT dashboard. We're going to apply a device posture rule to your Jira application. Device posture rules can be found in the same area where you included your email in the application (so edit Jira ) 
 
