@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configure Cloudflare Gateway &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Cloudflare ZT Wrkshp - London
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-Requisites:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Page6.html">Cloudflare Zero Trust Network Access Lab</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cloudflare ZT Wrkshp - London</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Configure Cloudflare Gateway</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/page3.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configure-cloudflare-gateway">
+<h1>Configure Cloudflare Gateway<a class="headerlink" href="#configure-cloudflare-gateway" title="Permalink to this headline"></a></h1>
+<section id="connect-to-the-gateway-virtual-desktop-over-rdp">
+<h2>Connect to the Gateway Virtual Desktop over RDP<a class="headerlink" href="#connect-to-the-gateway-virtual-desktop-over-rdp" title="Permalink to this headline"></a></h2>
+<p>If you don’t have an RDP client installed on your laptop, download the Microsoft Remote Desktop client (for <a class="reference external" href="https://apps.microsoft.com/store/detail/microsoft-remote-desktop/9WZDNCRFJ3PS">Windows</a> or <a class="reference external" href="https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12">Mac</a>).</p>
+<p>Open the Microsoft RDP client, connect to the hypervisor using either the <code class="docutils literal notranslate"><span class="pre">gateway-env</span></code> hostname ( <code class="docutils literal notranslate"><span class="pre">gateway-env.rdp.confused-cherry.cfiq.io)</span></code>) or the IP address attached to the A record.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span><span class="p">:</span> <span class="n">cloudflare</span>
+<span class="n">password</span><span class="p">:</span> <span class="c1">#Savetheinternet</span>
+</pre></div>
+</div>
+</section>
+<section id="install-warp-for-windows">
+<h2>Install WARP for Windows<a class="headerlink" href="#install-warp-for-windows" title="Permalink to this headline"></a></h2>
+<ol class="arabic simple">
+<li><p>Download Cloudflare WARP for Windows (https://install.appcenter.ms/orgs/cloudflare/apps/1.1.1.1-windows-1/distribution_groups/release)</p></li>
+<li><p>Navigate to your predefined download folder and open the executable file to install WARP.</p></li>
+<li><p>Follow the instructions to complete installation. Cloudflare WARP will automatically launch and appear in your menu bar with the Cloudflare logo.</p></li>
+<li><p>Click Next and Accept Cloudflare’s privacy policy.</p></li>
+<li><p>DO NOT Toggle WARP right now, as you need to sign in first. Select preferences &gt;&gt; account &gt;&gt; sign into Cloudflare Zero Trust</p></li>
+<li><p>Authenticate to your specific account via OTP</p></li>
+<li><p>WARP is now running.</p></li>
+</ol>
+</section>
+<section id="install-the-cloudflare-root-certificate">
+<h2>Install the Cloudflare Root Certificate<a class="headerlink" href="#install-the-cloudflare-root-certificate" title="Permalink to this headline"></a></h2>
+<p>Advanced security features including HTTPS traffic inspection require users to install and trust the Cloudflare root certificate on their machine or device.</p>
+<p>​​<strong>Download the Cloudflare root certificate</strong>
+First, download the Cloudflare certificate. The certificate is available both as a .pem and as a .crt file. Certain applications require the certificate to be in a specific file type, so ensure you download the most appropriate file for your use case.</p>
+<ul class="simple">
+<li><p>Download certificate (.crt): https://developers.cloudflare.com/cloudflare-one/static/documentation/connections/Cloudflare_CA.crt</p></li>
+<li><p>Download certificate (.pem): https://developers.cloudflare.com/cloudflare-one/static/documentation/connections/Cloudflare_CA.pem</p></li>
+</ul>
+<p>Windows offers two options to install the certificate, each having a different impact on which users will be affected by trusting the root certificate. For this lab we’ll be installing the certificate for the logged in user only</p>
+<ol class="arabic">
+<li><p>Download the Cloudflare certificate.</p></li>
+<li><p>Right-click the certificate file.</p></li>
+<li><p>Click Open.</p>
+<blockquote>
+<div><p>If you see a Security Warning window, click Open.</p>
+</div></blockquote>
+</li>
+<li><p>The Certificate window will appear. Click Install Certificate.
+<span class="xref myst">cert_install_windows.png</span></p></li>
+<li><p>Now choose a Store Location.</p></li>
+<li><p>Click Next.</p></li>
+<li><p>On the next screen, click Browse.</p></li>
+<li><p>Choose the Trusted Root Certification Authorities store.</p></li>
+<li><p>Click OK.
+<span class="xref myst">cert_install2.png</span></p></li>
+<li><p>Click Finish</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Cloudflare.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
