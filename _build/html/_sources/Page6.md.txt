@@ -4,55 +4,18 @@ Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applicat
 ## SSH access to the lab
 Start by opening either powershell or terminal (Windows/Mac, respectively). We'll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you'll need to access the system. 
 
-[rsa-private-key]
+First you will need a private key to access the VMs to do this securely you will need to create a new file on your device 
 
-if you can't download this file, here are some instructions for getting it onto your device.
-
-```
------BEGIN OPENSSH PRIVATE KEY-----
-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[
-qVkYYNOU1kyqCgWwh1zc0m0BKsiZ9DhfZYunKR/DIHsrKlpwWxpeNg8/KO2TWMYikInZv8
-B4FSmI4LvMTSL5AAAAE25wYXRlbEBDMDJEVjhGQU1ENlIBAgMEBQYH
------END OPENSSH PRIVATE KEY-----
+1. open your favorite text editor 
+2. create a new empty file 
+3. paste the contents from [here](https://lab-access.cf-tme.com)
+4. save the file locally with filename `id_rsa`
+```{admonition} File Extension
+:class: warning
+Be aware that some text editors will try to give the file an extension (eg. txt) for compatability and avoiding encoding issues be sure to remove any auto added file extension, and in windows select "all files" as the type from the dropdown
 ```
 
-- open your favorite text editor and copy/paste the above text into it.
-- once that's done, save the file without an extension (Generally it's okay if it has an extension but best practice is to save it without one)
-
-Run the following command in powershell/terminal to access with the username+password cloudflare #savetheinternet
+Run the following command in powershell/terminal to access with the username+password cloudflare `#savetheinternet`
 
 ```sh
 ssh -i [privatekey file] cloudflare@<lab-slug>.cfiq.io
