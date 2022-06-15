@@ -1,4 +1,4 @@
-async function onRequestGet({ params, request }) {
+export async function onRequestGet({ params, request }) {
   let slugs = [
     "ancient-uncle",
     "awful-movie",
