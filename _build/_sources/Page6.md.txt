@@ -1,4 +1,4 @@
-#Cloudflare Zero Trust Network Access Lab
+# Cloudflare Zero Trust Network Access Lab
 Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applications to Cloudflare over a single tunnel via our app connector Cloudflare Tunnel, and applying Zero Trust rules on top of your application after onboarding it to Cloudflare Access. 
 
 ## SSH access to the lab

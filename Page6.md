@@ -1,4 +1,4 @@
-#Cloudflare Zero Trust Network Access Lab
+# Cloudflare Zero Trust Network Access Lab
 Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applications to Cloudflare over a single tunnel via our app connector Cloudflare Tunnel, and applying Zero Trust rules on top of your application after onboarding it to Cloudflare Access. 
 
 ## SSH access to the lab
@@ -102,7 +102,7 @@ Then, fill in the following information
 ## Test access to Jira
 We've configured Jira, but let's try and access it now. Navigate to the domain you onboarded to cloudflare (in this example, jira.ancient-uncle.cfiq.io). You should reach a Cloudflare Access login page.
 
-[image-of-cf-access-login-page]()
+[image-of-cf-access-login-page](/ZT%20Access%20Lab%20-%20Jira%20Login%20Page.png)
 
 Use your OTP to authenticate to the application. You should see the Jira setup page after authenticating.
 
