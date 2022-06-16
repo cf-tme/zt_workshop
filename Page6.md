@@ -16,7 +16,7 @@ ssh cloudflare@ssh.<lab-slug>.cfiq.io
 Replace <lab-slug> with your assigned name. You should have SSH access to your device.
 
 ## Create a tunnel for Jira
-Keep that SSH terminal up, but go back to your Zero Trust dashboard. 
+Keep that SSH terminal up, but go to your Zero Trust dashboard. 
 
 Select Access >> Tunnels and create a brand new tunnel. Name it whatever you'd like.
 
@@ -113,21 +113,6 @@ These rules require no editing, you can simply save the application now
 
 Inside the Gateway Lab you configured yesterday, turn on Cloudflare Zero Trust and type in the private IP address of your application. You should be able to access it via the private IP, even though it's on a completely different network.
 
-## ZT Rule Exercise - Multi-Factor Authentication
-
-Now, go back to your ZT dashboard. We're going to apply a device posture rule to your Jira application. Device posture rules can be found in the same area where you included your email in the application (so edit Jira ) 
-
-![pic-of-rules-page](./zt-access-screencaps/my-team-device-posture.png)
-
-Instead of selecting an 'include' rule, we're instead going to add a 'require' rule. 
-
-We'll add authentication method and select multi-factor authentication. Save this rule, and then save the application.
-
-![pic-add-posture](./zt-access-screencaps/device-posture-rules.png)
-
-Try and log into Jira again. This time it should fail, because your account doesn't have any 2FA methods attached to them.
-
-
 ## Enabling Clientless RBI
 
 Now, we're going to use device posture rules in service of an interesting use case. To do this, however, we'll need to add a new function to your account. 
@@ -150,7 +135,7 @@ Then, add a device posture element, and select gateway from the options.
 
 ## ZT Rule Exercise - Gateway
 
-Go back and edit your Jira policy, and remove the multi-factor authentication requirement. Instead, replace it with a gateway requirement. Save the policy and then save the application, and if you're inside your Gateway Windows VM, turn off your WARP device client. 
+Go back and edit your Jira policy, and add a require rule for gateway. Save the policy and then save the application.
 
 Try to access the Jira application right now, and you should receive a failure message before you even reach a login page. This is because Cloudflare detects the absence of a gateway or device client on your computer.
 
