@@ -58,7 +58,7 @@ Action | Isolate
 
 5. Test the Data protection controls that you've enabled in the policy by trying to copy/paste some content, or print a webpage. Both actions should fail.
 
-# Congratulations! You've reached the end of the lab. 
+# Congratulations! You've reached the end of this lab. 
 
 
 
