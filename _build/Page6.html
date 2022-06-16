@@ -94,19 +94,8 @@
 <section id="ssh-access-to-the-lab">
 <h2>SSH access to the lab<a class="headerlink" href="#ssh-access-to-the-lab" title="Permalink to this headline"></a></h2>
 <p>Start by opening either powershell or terminal (Windows/Mac, respectively). We’ll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you’ll need to access the system.</p>
-<p>First you will need a private key to access the VMs to do this securely you will need to create a new file on your device</p>
-<ol class="arabic simple">
-<li><p>open your favorite text editor</p></li>
-<li><p>create a new empty file</p></li>
-<li><p>paste the contents from <a class="reference external" href="https://zt-access-london-lab.cf-tme.workers.dev/">here</a></p></li>
-<li><p>save the file locally with filename <code class="docutils literal notranslate"><span class="pre">id_rsa</span></code></p></li>
-</ol>
-<div class="warning admonition">
-<p class="admonition-title">File Extension</p>
-<p>Be aware that some text editors will try to give the file an extension (eg. txt) for compatability and avoiding encoding issues be sure to remove any auto added file extension, and in windows select “all files” as the type from the dropdown</p>
-</div>
 <p>Run the following command in powershell/terminal to access with the username+password cloudflare <code class="docutils literal notranslate"><span class="pre">#savetheinternet</span></code></p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh -i <span class="o">[</span>privatekey file<span class="o">]</span> cloudflare@&lt;lab-slug&gt;.cf-tme.com
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh cloudflare@ssh.&lt;lab-slug&gt;.cf-tme.com
 </pre></div>
 </div>
 <p>Replace <lab-slug> with your assigned name. You should have SSH access to your device.</p>

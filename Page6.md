@@ -4,21 +4,13 @@ Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applicat
 ## SSH access to the lab
 Start by opening either powershell or terminal (Windows/Mac, respectively). We'll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you'll need to access the system. 
 
-First you will need a private key to access the VMs to do this securely you will need to create a new file on your device 
-
-1. open your favorite text editor 
-2. create a new empty file 
-3. paste the contents from [here](https://zt-access-london-lab.cf-tme.workers.dev/)
-4. save the file locally with filename `id_rsa`
-```{admonition} File Extension
-:class: warning
-Be aware that some text editors will try to give the file an extension (eg. txt) for compatability and avoiding encoding issues be sure to remove any auto added file extension, and in windows select "all files" as the type from the dropdown
-```
-
 Run the following command in powershell/terminal to access with the username+password cloudflare `#savetheinternet`
 
+````{admonition} Credentials
+You can retrive your credentials from https://credentials-zt-workshop.cf-tme.com/LAB_SLUG
+````
 ```sh
-ssh -i [privatekey file] cloudflare@<lab-slug>.cf-tme.com
+ssh cloudflare@ssh.<lab-slug>.cfiq.io
 ```
 
 Replace <lab-slug> with your assigned name. You should have SSH access to your device.
