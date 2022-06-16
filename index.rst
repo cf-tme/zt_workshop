@@ -18,6 +18,10 @@ Welcome to the Cloudflare Zero Trust Hands-on Workshop!
    :caption: Lab Exercises:
    :maxdepth: 2
 
+   page1.md
+   page2.md
+   page3.md
+   page4.md
    Page6.md
    area1.md
 

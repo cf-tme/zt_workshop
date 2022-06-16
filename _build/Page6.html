@@ -18,7 +18,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Setup Cloudflare Account" href="cfacct.html" /> 
+    <link rel="next" title="Area 1 Lab" href="area1.html" />
+    <link rel="prev" title="Create a Gateway DNS policy" href="page4.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,6 +43,16 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="page1.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page2.html">Configure identity provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page2.html#enable-one-time-pin-as-an-authentication-method">Enable One Time Pin as an Authentication Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page2.html#create-a-default-location-for-your-account">Create a Default Location for your account</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page2.html#configure-device-enrollment-policy-for-device-client-warp">Configure Device Enrollment Policy for device client (WARP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page3.html">Configure Cloudflare Gateway</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page4.html">Create a Gateway DNS policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-gateway-http-policy">Create a Gateway HTTP Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page4.html#create-a-remote-browser-isolation-policy">Create a Remote Browser Isolation policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="page4.html#congratulations-you-ve-reached-the-end-of-this-lab">Congratulations! You’ve reached the end of this lab.</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cloudflare Zero Trust Network Access Lab</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#ssh-access-to-the-lab">SSH access to the lab</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-a-tunnel-for-jira">Create a tunnel for Jira</a></li>
@@ -53,7 +64,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#add-a-private-ip-route-to-your-tunnel">Add a Private IP route to your tunnel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#onboard-private-ip-application-to-cloudflare-access">Onboard Private IP application to Cloudflare Access</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-access-to-private-ip-application">Test access to Private IP application</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#zt-rule-exercise-multi-factor-authentication">ZT Rule Exercise - Multi-Factor Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#enabling-clientless-rbi">Enabling Clientless RBI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#zt-rule-exercise-gateway">ZT Rule Exercise - Gateway</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#add-browser-based-ssh-app-to-tunnel">Add Browser-Based SSH app to tunnel</a></li>
@@ -62,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#congrats-you-re-done-great-job">Congrats! you’re done. great job!</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="area1.html">Area 1 Lab</a></li>
 </ul>
 
         </div>
@@ -95,14 +106,18 @@
 <h2>SSH access to the lab<a class="headerlink" href="#ssh-access-to-the-lab" title="Permalink to this headline"></a></h2>
 <p>Start by opening either powershell or terminal (Windows/Mac, respectively). We’ll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you’ll need to access the system.</p>
 <p>Run the following command in powershell/terminal to access with the username+password cloudflare <code class="docutils literal notranslate"><span class="pre">#savetheinternet</span></code></p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh cloudflare@ssh.&lt;lab-slug&gt;.cf-tme.com
+<div class="admonition-credentials admonition">
+<p class="admonition-title">Credentials</p>
+<p>You can retrive your credentials from https://credentials-zt-workshop.cf-tme.com/LAB_SLUG</p>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh cloudflare@ssh.&lt;lab-slug&gt;.cfiq.io
 </pre></div>
 </div>
 <p>Replace <lab-slug> with your assigned name. You should have SSH access to your device.</p>
 </section>
 <section id="create-a-tunnel-for-jira">
 <h2>Create a tunnel for Jira<a class="headerlink" href="#create-a-tunnel-for-jira" title="Permalink to this headline"></a></h2>
-<p>Keep that SSH terminal up, but go back to your Zero Trust dashboard.</p>
+<p>Keep that SSH terminal up, but go to your Zero Trust dashboard.</p>
 <p>Select Access &gt;&gt; Tunnels and create a brand new tunnel. Name it whatever you’d like.</p>
 <p><img alt="image-of-tunnel-dash" src="_images/tunnel-create-start-page.png" /></p>
 <p>Next, you’ll see the following screen. These are pre-baked commands that you’ll need to copy into your SSH terminal in order to establish connectivity to Cloudflare. When you do, you’ll see your device pop up in the ‘connectors’ screen.</p>
@@ -171,15 +186,6 @@
 <h2>Test access to Private IP application<a class="headerlink" href="#test-access-to-private-ip-application" title="Permalink to this headline"></a></h2>
 <p>Inside the Gateway Lab you configured yesterday, turn on Cloudflare Zero Trust and type in the private IP address of your application. You should be able to access it via the private IP, even though it’s on a completely different network.</p>
 </section>
-<section id="zt-rule-exercise-multi-factor-authentication">
-<h2>ZT Rule Exercise - Multi-Factor Authentication<a class="headerlink" href="#zt-rule-exercise-multi-factor-authentication" title="Permalink to this headline"></a></h2>
-<p>Now, go back to your ZT dashboard. We’re going to apply a device posture rule to your Jira application. Device posture rules can be found in the same area where you included your email in the application (so edit Jira )</p>
-<p><img alt="pic-of-rules-page" src="_images/my-team-device-posture.png" /></p>
-<p>Instead of selecting an ‘include’ rule, we’re instead going to add a ‘require’ rule.</p>
-<p>We’ll add authentication method and select multi-factor authentication. Save this rule, and then save the application.</p>
-<p><img alt="pic-add-posture" src="_images/device-posture-rules.png" /></p>
-<p>Try and log into Jira again. This time it should fail, because your account doesn’t have any 2FA methods attached to them.</p>
-</section>
 <section id="enabling-clientless-rbi">
 <h2>Enabling Clientless RBI<a class="headerlink" href="#enabling-clientless-rbi" title="Permalink to this headline"></a></h2>
 <p>Now, we’re going to use device posture rules in service of an interesting use case. To do this, however, we’ll need to add a new function to your account.</p>
@@ -194,7 +200,7 @@
 </section>
 <section id="zt-rule-exercise-gateway">
 <h2>ZT Rule Exercise - Gateway<a class="headerlink" href="#zt-rule-exercise-gateway" title="Permalink to this headline"></a></h2>
-<p>Go back and edit your Jira policy, and remove the multi-factor authentication requirement. Instead, replace it with a gateway requirement. Save the policy and then save the application, and if you’re inside your Gateway Windows VM, turn off your WARP device client.</p>
+<p>Go back and edit your Jira policy, and add a require rule for gateway. Save the policy and then save the application.</p>
 <p>Try to access the Jira application right now, and you should receive a failure message before you even reach a login page. This is because Cloudflare detects the absence of a gateway or device client on your computer.</p>
 <p><img alt="gateway-fail" src="_images/gateway-failure.png" /></p>
 <p>Instead, navigate to your Clientless RBI Webpage</p>
@@ -231,7 +237,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cfacct.html" class="btn btn-neutral float-left" title="Setup Cloudflare Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="page4.html" class="btn btn-neutral float-left" title="Create a Gateway DNS policy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="area1.html" class="btn btn-neutral float-right" title="Area 1 Lab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
