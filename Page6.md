@@ -16,7 +16,7 @@ ssh cloudflare@ssh.<lab-slug>.cfiq.io
 Replace <lab-slug> with your assigned name. You should have SSH access to your device.
 
 ## Create a tunnel for Jira
-Keep that SSH terminal up, but go back to your Zero Trust dashboard. 
+Keep that SSH terminal up, but go to your Zero Trust dashboard. 
 
 Select Access >> Tunnels and create a brand new tunnel. Name it whatever you'd like.
 
