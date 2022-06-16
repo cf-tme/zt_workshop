@@ -22,7 +22,7 @@ As part of this lab, we created a SAML-based IdP named TS2 (Trusted SAML Server)
 
 3. Drag and drop the metadata file into the GUI
 
-4. Press **Test** at the bottom of the page
+4. Press Save (don't press **Test** - this is a mock server!)
 
 ```{admonition} Note
 You can add multiple identity providers - including multiple providers of the same type
