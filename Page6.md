@@ -6,8 +6,11 @@ Start by opening either powershell or terminal (Windows/Mac, respectively). We'l
 
 Run the following command in powershell/terminal to access with the username+password cloudflare `#savetheinternet`
 
+````{admonition} Credentials
+You can retrive your credentials from https://credentials-zt-workshop.cf-tme.com/LAB_SLUG
+````
 ```sh
-ssh cloudflare@ssh.<lab-slug>.cf-tme.com
+ssh cloudflare@ssh.<lab-slug>.cfiq.io
 ```
 
 Replace <lab-slug> with your assigned name. You should have SSH access to your device.
