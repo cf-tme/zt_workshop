@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloudflare Zero Trust Network Access Lab &mdash; Cloudflare ZT Wrkshp - London  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Setup Cloudflare Account" href="cfacct.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Cloudflare ZT Wrkshp - London
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Pre-Requisites:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cfacct.html">Setup Cloudflare Account</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Lab Exercises:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cloudflare Zero Trust Network Access Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-access-to-the-lab">SSH access to the lab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-tunnel-for-jira">Create a tunnel for Jira</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#onboard-jira-to-cloudflare-access">Onboard Jira to Cloudflare Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-access-to-jira">Test access to Jira</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-another-application-to-your-tunnel">Add another application to your tunnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#onboard-juiceshop-to-cloudflare-access">Onboard Juiceshop to Cloudflare Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-access-to-juiceshop">Test access to Juiceshop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-private-ip-route-to-your-tunnel">Add a Private IP route to your tunnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#onboard-private-ip-application-to-cloudflare-access">Onboard Private IP application to Cloudflare Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-access-to-private-ip-application">Test access to Private IP application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zt-rule-exercise-multi-factor-authentication">ZT Rule Exercise - Multi-Factor Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#enabling-clientless-rbi">Enabling Clientless RBI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zt-rule-exercise-gateway">ZT Rule Exercise - Gateway</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-browser-based-ssh-app-to-tunnel">Add Browser-Based SSH app to tunnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#onboard-browser-based-ssh-application-to-cloudflare-access">Onboard Browser-Based SSH application to Cloudflare Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-browser-based-ssh-application">Access Browser-Based SSH application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#congrats-you-re-done-great-job">Congrats! you’re done. great job!</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Cloudflare ZT Wrkshp - London</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Cloudflare Zero Trust Network Access Lab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Page6.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cloudflare-zero-trust-network-access-lab">
+<h1>Cloudflare Zero Trust Network Access Lab<a class="headerlink" href="#cloudflare-zero-trust-network-access-lab" title="Permalink to this headline"></a></h1>
+<p>Welcome to to the ZTNA Lab - this lab will focus on connecting multiple applications to Cloudflare over a single tunnel via our app connector Cloudflare Tunnel, and applying Zero Trust rules on top of your application after onboarding it to Cloudflare Access.</p>
+<section id="ssh-access-to-the-lab">
+<h2>SSH access to the lab<a class="headerlink" href="#ssh-access-to-the-lab" title="Permalink to this headline"></a></h2>
+<p>Start by opening either powershell or terminal (Windows/Mac, respectively). We’ll use this to SSH into our origin server, an Ubuntu 20.04 VM. Below is a link to the private key you’ll need to access the system.</p>
+<p>First you will need a private key to access the VMs to do this securely you will need to create a new file on your device</p>
+<ol class="arabic simple">
+<li><p>open your favorite text editor</p></li>
+<li><p>create a new empty file</p></li>
+<li><p>paste the contents from <a class="reference external" href="https://zt-access-london-lab.cf-tme.workers.dev/">here</a></p></li>
+<li><p>save the file locally with filename <code class="docutils literal notranslate"><span class="pre">id_rsa</span></code></p></li>
+</ol>
+<div class="warning admonition">
+<p class="admonition-title">File Extension</p>
+<p>Be aware that some text editors will try to give the file an extension (eg. txt) for compatability and avoiding encoding issues be sure to remove any auto added file extension, and in windows select “all files” as the type from the dropdown</p>
+</div>
+<p>Run the following command in powershell/terminal to access with the username+password cloudflare <code class="docutils literal notranslate"><span class="pre">#savetheinternet</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ssh -i <span class="o">[</span>privatekey file<span class="o">]</span> cloudflare@&lt;lab-slug&gt;.cf-tme.com
+</pre></div>
+</div>
+<p>Replace <lab-slug> with your assigned name. You should have SSH access to your device.</p>
+</section>
+<section id="create-a-tunnel-for-jira">
+<h2>Create a tunnel for Jira<a class="headerlink" href="#create-a-tunnel-for-jira" title="Permalink to this headline"></a></h2>
+<p>Keep that SSH terminal up, but go back to your Zero Trust dashboard.</p>
+<p>Select Access &gt;&gt; Tunnels and create a brand new tunnel. Name it whatever you’d like.</p>
+<p><img alt="image-of-tunnel-dash" src="_images/tunnel-create-start-page.png" /></p>
+<p>Next, you’ll see the following screen. These are pre-baked commands that you’ll need to copy into your SSH terminal in order to establish connectivity to Cloudflare. When you do, you’ll see your device pop up in the ‘connectors’ screen.</p>
+<p><img alt="image-of-tunnel-connectors" src="_images/tunnel-command-generation.png" /></p>
+<p>Once you see your server appear there, go to the next page.</p>
+<p>Here, you’re going to configure your public-facing hostname and the service it’ll run. Since we’re configuring jira, I’ve called my hostname jira.ancient-uncle.cfiq.io</p>
+<p>The service will be HTTP localhost:8000</p>
+<p><img alt="image-of-tunnel-hostname-config" src="_images/tunnel-hostname-config-jira.png" /></p>
+<p>Save the tunnel once you’ve entered that in.</p>
+</section>
+<section id="onboard-jira-to-cloudflare-access">
+<h2>Onboard Jira to Cloudflare Access<a class="headerlink" href="#onboard-jira-to-cloudflare-access" title="Permalink to this headline"></a></h2>
+<p>Now that you have the tunnel, let’s go to Cloudflare Access and onboard our first application.</p>
+<p>Add an application, and select “Self-Hosted” from the options available</p>
+<p><img alt="image-of-app-types" src="_images/access-application-types.png" /></p>
+<p>Then, fill in the following information</p>
+<ul class="simple">
+<li><p>on the first page, enter the application name, and then the domain + hostname (subdomain) you configured for your tunnel
+<img alt="image-of-page-1" src="_images/jira-onboarding.png" /></p></li>
+<li><p>on the next page, set up who has access to this application. For the purposes of this exercise, only enter your own email into the ‘include’ field.
+<img alt="image-of-page-2" src="_images/jira-onboarding-access-policy.png" /></p></li>
+<li><p>then, for the final page, no additional configuration is required. go ahead and save the application. If you don’t see your VM on the Access page, refresh it.</p></li>
+</ul>
+</section>
+<section id="test-access-to-jira">
+<h2>Test access to Jira<a class="headerlink" href="#test-access-to-jira" title="Permalink to this headline"></a></h2>
+<p>We’ve configured Jira, but let’s try and access it now. Navigate to the domain you onboarded to cloudflare (in this example, jira.ancient-uncle.cfiq.io). You should reach a Cloudflare Access login page.</p>
+<p><img alt="image-of-cf-access-login-page" src="_images/jira-login-page.png" /></p>
+<p>Use your OTP to authenticate to the application. You should see the Jira setup page after authenticating.</p>
+<p><img alt="image-of-jira-setup-page" src="_images/jira-login-success.png" /></p>
+</section>
+<section id="add-another-application-to-your-tunnel">
+<h2>Add another application to your tunnel<a class="headerlink" href="#add-another-application-to-your-tunnel" title="Permalink to this headline"></a></h2>
+<p>Now, go back into tunnel and edit your existing tunnel configuration.</p>
+<p><img alt="pic-of-edited-tunnel-landing-page" src="_images/tunnel-re-edit-landing-page.png" /></p>
+<p>Above the existing hostname you configured, select ‘add hostname’</p>
+<p><img alt="image-of-re-edited-tunnel" src="_images/add-hostname.png" /></p>
+<p>We’re going to add an application called Juiceshop. Name your subdomain Juiceshop and set the service as HTTP localhost:3000 and save it</p>
+<p><img alt="image-of-juiceshop-config" src="_images/juiceshop-config.png" /></p>
+</section>
+<section id="onboard-juiceshop-to-cloudflare-access">
+<h2>Onboard Juiceshop to Cloudflare Access<a class="headerlink" href="#onboard-juiceshop-to-cloudflare-access" title="Permalink to this headline"></a></h2>
+<p>You’ve added a service to your existing tunnel, but you still need to add a new application in Cloudflare Access. Go ahead and repeat the process for adding a self-hosted application, but this time call it Juiceshop instead.</p>
+</section>
+<section id="test-access-to-juiceshop">
+<h2>Test access to Juiceshop<a class="headerlink" href="#test-access-to-juiceshop" title="Permalink to this headline"></a></h2>
+<p>Try and log into juiceshop.<enter-lab-slug>.cfiq.io. The process should be nearly identical to the last application. The purpose of this is to highlight that you can run multiple web-based applications over Cloudflare Tunnel using any port number.</p>
+<p><img alt="juiceshop" src="_images/juiceshop.png" /></p>
+</section>
+<section id="add-a-private-ip-route-to-your-tunnel">
+<h2>Add a Private IP route to your tunnel<a class="headerlink" href="#add-a-private-ip-route-to-your-tunnel" title="Permalink to this headline"></a></h2>
+<p>Next, we’re going to add a Private IP as an application to Cloudflare Access. Go back to the tunnel you just modified and edit it again. Instead of adding a hostname, you’ll need to add a private IP instead. When you’re on the appropriate page, go back to your open SSH terminal and run an ifconfig.</p>
+<p>Find your device’s 10.10.0.0/24 IP address and add it as a /32 (example: 10.10.0.3/32).</p>
+<p><img alt="pic-of-private-ip-tunnel" src="_images/private-ip-page.png" /></p>
+<p>Save the tunnel again.</p>
+</section>
+<section id="onboard-private-ip-application-to-cloudflare-access">
+<h2>Onboard Private IP application to Cloudflare Access<a class="headerlink" href="#onboard-private-ip-application-to-cloudflare-access" title="Permalink to this headline"></a></h2>
+<p>Add a Private IP application in Cloudflare Access now. You’ll be redirected to a different page than before.</p>
+<p><img alt="private-ip-app-config" src="_images/private-ip-page.png" /></p>
+<p>Fill in the private IP you documented in the tunnel, and continue. This will bring you to a new set of rules.</p>
+<p><img alt="private-app-rules-config" src="_images/private-ip-app-rules.png" /></p>
+<p>These rules require no editing, you can simply save the application now</p>
+</section>
+<section id="test-access-to-private-ip-application">
+<h2>Test access to Private IP application<a class="headerlink" href="#test-access-to-private-ip-application" title="Permalink to this headline"></a></h2>
+<p>Inside the Gateway Lab you configured yesterday, turn on Cloudflare Zero Trust and type in the private IP address of your application. You should be able to access it via the private IP, even though it’s on a completely different network.</p>
+</section>
+<section id="zt-rule-exercise-multi-factor-authentication">
+<h2>ZT Rule Exercise - Multi-Factor Authentication<a class="headerlink" href="#zt-rule-exercise-multi-factor-authentication" title="Permalink to this headline"></a></h2>
+<p>Now, go back to your ZT dashboard. We’re going to apply a device posture rule to your Jira application. Device posture rules can be found in the same area where you included your email in the application (so edit Jira )</p>
+<p><img alt="pic-of-rules-page" src="_images/my-team-device-posture.png" /></p>
+<p>Instead of selecting an ‘include’ rule, we’re instead going to add a ‘require’ rule.</p>
+<p>We’ll add authentication method and select multi-factor authentication. Save this rule, and then save the application.</p>
+<p><img alt="pic-add-posture" src="_images/device-posture-rules.png" /></p>
+<p>Try and log into Jira again. This time it should fail, because your account doesn’t have any 2FA methods attached to them.</p>
+</section>
+<section id="enabling-clientless-rbi">
+<h2>Enabling Clientless RBI<a class="headerlink" href="#enabling-clientless-rbi" title="Permalink to this headline"></a></h2>
+<p>Now, we’re going to use device posture rules in service of an interesting use case. To do this, however, we’ll need to add a new function to your account.</p>
+<p>Go to Settings &gt;&gt; Browser Isolation.</p>
+<p><img alt="pic-of-RBI-clientless-enablement-page" src="_images/settings-page.png" /></p>
+<p>Turn on Clientless Browser Isolation, then manage your Clientless RBI Rules</p>
+<p><img alt="pic-of-RBI-rule-generation" src="_images/clientless-rbi-rule.png" /></p>
+<p>Add a rule that allows your email address to authenticate to Cloudflare’s Clientless RBI service.</p>
+<p>Next, go to My Team &gt;&gt; Devices &gt;&gt; Device Posture</p>
+<p><img alt="pic-of-Device-Posture" src="_images/my-team-device-posture.png" /></p>
+<p>Then, add a device posture element, and select gateway from the options.</p>
+</section>
+<section id="zt-rule-exercise-gateway">
+<h2>ZT Rule Exercise - Gateway<a class="headerlink" href="#zt-rule-exercise-gateway" title="Permalink to this headline"></a></h2>
+<p>Go back and edit your Jira policy, and remove the multi-factor authentication requirement. Instead, replace it with a gateway requirement. Save the policy and then save the application, and if you’re inside your Gateway Windows VM, turn off your WARP device client.</p>
+<p>Try to access the Jira application right now, and you should receive a failure message before you even reach a login page. This is because Cloudflare detects the absence of a gateway or device client on your computer.</p>
+<p><img alt="gateway-fail" src="_images/gateway-failure.png" /></p>
+<p>Instead, navigate to your Clientless RBI Webpage</p>
+<p><lab-slug>.cloudflareaccess.com/browser</p>
+<p><img alt="image-of-RBI-URL" src="_images/clientless-rbi-url-in-browser.png" /></p>
+<p>After logging in, you should see a page that looks like this.</p>
+<p><img alt="image-of-RBI-search-bar" src="_images/clientless-rbi-search-bar.png" /></p>
+<p>Type in your Jira url and navigate to it. You should reach a login page this time.</p>
+</section>
+<section id="add-browser-based-ssh-app-to-tunnel">
+<h2>Add Browser-Based SSH app to tunnel<a class="headerlink" href="#add-browser-based-ssh-app-to-tunnel" title="Permalink to this headline"></a></h2>
+<p>Finally, we’re going to expose a non-web application over a webpage with Cloudflare Access. Go back into your tunnel configuration file and edit it one more time</p>
+<p>Add a new service for SSH, and save it</p>
+</section>
+<section id="onboard-browser-based-ssh-application-to-cloudflare-access">
+<h2>Onboard Browser-Based SSH application to Cloudflare Access<a class="headerlink" href="#onboard-browser-based-ssh-application-to-cloudflare-access" title="Permalink to this headline"></a></h2>
+<p>Go back to Access and add this SSH application via the hostname that you just created. However, you’ll need to add one more thing in the final settings page.</p>
+<p><img alt="BBSSH-config" src="_images/ssh-onboarding.png" /></p>
+<p>Make sure you turn on automatic cloudflared authentication, and also select SSH in Browser Rendering. This will allow Cloudflare to render the SSH terminal in the browser.</p>
+<p><img alt="bbssh-settings" src="_images/bbssh-settings-page.png" /></p>
+</section>
+<section id="access-browser-based-ssh-application">
+<h2>Access Browser-Based SSH application<a class="headerlink" href="#access-browser-based-ssh-application" title="Permalink to this headline"></a></h2>
+<p>Log into your Browser-Based SSH application, and copy/paste the private key you saved at the beginning of the lab. Then put in your credentials.</p>
+<p><img alt="pic-of-browser-based-ssh-app-settings" src="_images/bbssh-access-login-page.png" /></p>
+<p>You should see an SSH terminal render in front of you. Try running some commands!</p>
+</section>
+<section id="congrats-you-re-done-great-job">
+<h2>Congrats! you’re done. great job!<a class="headerlink" href="#congrats-you-re-done-great-job" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cfacct.html" class="btn btn-neutral float-left" title="Setup Cloudflare Account" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Cloudflare.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
